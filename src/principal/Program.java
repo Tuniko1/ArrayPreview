@@ -15,25 +15,24 @@ public class Program {
 		Scanner sc = new Scanner(System.in);
 		Random randon = new Random();
 		
-		
-		System.out.println("Digite o nome do Aluno: ");
-		String nome = sc.nextLine();
-		
 		double[] notas = new double[4];
 		int[] vetor = new int[5];
+		String[] nomes = new String[5];
 		double somaNotas = 0;
-		int op = randon.nextInt(2);
-		String[] nomes = new String [10];
+		int op = randon.nextInt(5);
 		
-		
+		  
+		System.out.println("Digite o nome do Aluno: ");
+		String nome = sc.nextLine();
 		for(int i = 0; i < notas.length; i++) {
 			System.out.println("Insira o valor da " + (i + 1) + "ª nota bimestral: ");	
 			notas [i] = sc.nextDouble();
 			somaNotas += notas[i];		
 		}
 		System.out.println("A média do(a) "+nome+" é: "+somaNotas / notas.length);			
-		System.out.println();
+		System.out.println("\n");
 		
+		System.out.println("Números Pares -->");
 		for(int j = 0; j < vetor.length; j++) {
 			System.out.println("Insira o "+(j + 1)+"° número: ");
 			int numero = sc.nextInt();
@@ -46,19 +45,20 @@ public class Program {
 			System.out.print(vetor[j]+" é Par! índice --> "+j+" ");
 			System.out.println();
 			}		
-		}
-		for(int k = 0; k < nomes.length; k++) {
-			System.out.println("Insira o nome do participante do sorteio: ");
-			nomes [k] = sc.nextLine();
-			System.out.println("Insira um número: ");
-			int n1 = sc.nextInt();
 			
-			if(op == n1) {
-				System.out.println("o número: "+op+" foi sorteado e o vencedor é: "+nomes);
-			}
+		}	
+		System.out.println(ganhador());
 		}
-		
-		sc.close();				
-		
+		static String ganhador() {
+			Random random = new Random();
+			int op = random.nextInt(4);
+			String[] nomes = new String[5];
+			Scanner sc = new Scanner(System.in);
+			
+			for(int k = 0; k < nomes.length; k++) {
+				System.out.println("\nInsira o nome do participante n°"+(k+1)+": ");
+				nomes [k] = sc.nextLine();
+			};
+			return "o ganhador foi: "+nomes[op]+"\nO número sorteado foi: "+(op + 1);
 	}
 }
