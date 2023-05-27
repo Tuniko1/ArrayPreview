@@ -12,19 +12,16 @@ public class Program {
 	 *Usando o random faça uma simulação de um sorteio, cadastrando 10 pessoas,
 	 *apenas uma pessoa será a ganhadora para a proxima turma de java do senai;
 	 */
+		
 		Scanner sc = new Scanner(System.in);
-		Random randon = new Random();
-		
-		
-		System.out.println("Digite o nome do Aluno: ");
-		String nome = sc.nextLine();
-		
+				
 		double[] notas = new double[4];
 		int[] vetor = new int[5];
 		double somaNotas = 0;
-		int op = randon.nextInt(2);
-		String[] nomes = new String [10];
-		
+						
+		System.out.println("Método - Média Bimestral -->");
+		System.out.println("Digite o nome do Aluno: ");
+		String nome = sc.nextLine();
 		
 		for(int i = 0; i < notas.length; i++) {
 			System.out.println("Insira o valor da " + (i + 1) + "ª nota bimestral: ");	
@@ -32,8 +29,9 @@ public class Program {
 			somaNotas += notas[i];		
 		}
 		System.out.println("A média do(a) "+nome+" é: "+somaNotas / notas.length);			
-		System.out.println();
+		System.out.println("\n");
 		
+		System.out.println("Método - Números Pares -->");
 		for(int j = 0; j < vetor.length; j++) {
 			System.out.println("Insira o "+(j + 1)+"° número: ");
 			int numero = sc.nextInt();
@@ -43,22 +41,29 @@ public class Program {
 						
 		for (int j = 0; j < vetor.length; j++) {
 		if (vetor[j] % 2 == 0 ){
-			System.out.print(vetor[j]+" é Par! índice --> "+j+" ");
+			System.out.print(vetor[j]+" é Par! índice --> "+j+"\n ");
 			System.out.println();
 			}		
+		}		
+		System.out.println("Método Sorteio-->");
+		
+		System.out.println(ganhador());
+		sc.close();
+	
+		
 		}
-		for(int k = 0; k < nomes.length; k++) {
-			System.out.println("Insira o nome do participante do sorteio: ");
-			nomes [k] = sc.nextLine();
-			System.out.println("Insira um número: ");
-			int n1 = sc.nextInt();
+		static String ganhador() {
+			Random random = new Random();
+			int op = random.nextInt(4);
+			String[] nomes = new String[4];
+			Scanner sc = new Scanner(System.in);
 			
-			if(op == n1) {
-				System.out.println("o número: "+op+" foi sorteado e o vencedor é: "+nomes);
-			}
+			for(int k = 0; k < nomes.length; k++) {
+				System.out.println("Insira o nome do participante n°"+(k+1)+": ");
+				nomes [k] = sc.nextLine();
+			}sc.close();
+			
+			return "o ganhador foi: "+nomes[op]+"\nO número sorteado foi: "+(op + 1);			
+			
 		}
-		
-		sc.close();				
-		
-	}
 }
